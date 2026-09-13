@@ -1,0 +1,100 @@
+:root {
+  --bg: #f4f6f8;
+  --surface: #ffffff;
+  --text: #17202a;
+  --muted: #5b6776;
+  --border: #d9dee5;
+  --accent: #0b6e4f;
+  --accent-contrast: #ffffff;
+  --accent-soft: #e3f3ec;
+  --warn-bg: #fff6e0;
+  --warn-text: #7a4b00;
+  --err-bg: #fdecec;
+  --err-text: #9b1c1c;
+  --focus: #1a73e8;
+  --radius: 10px;
+  --shadow: 0 1px 2px rgba(16, 24, 40, 0.06), 0 1px 3px rgba(16, 24, 40, 0.08);
+  color-scheme: light dark;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --bg: #111418;
+    --surface: #1b2027;
+    --text: #e8edf2;
+    --muted: #9aa6b4;
+    --border: #2d3540;
+    --accent: #3fbf8f;
+    --accent-contrast: #06231a;
+    --accent-soft: #163327;
+    --warn-bg: #3a2c0c;
+    --warn-text: #ffd48a;
+    --err-bg: #3b1616;
+    --err-text: #ffb4b4;
+    --shadow: none;
+  }
+}
+
+* { box-sizing: border-box; }
+[hidden] { display: none !important; }
+
+html, body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--text);
+  font: 14px/1.45 -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+}
+
+h1, h2, h3 { margin: 0 0 8px; font-size: 14px; font-weight: 650; }
+
+.muted { color: var(--muted); }
+.small { font-size: 12px; }
+.label { color: var(--muted); font-size: 12px; text-transform: none; }
+.ellipsis { overflow: hidden; text-overflow: ellipsis; white-space: nowrap; min-width: 0; }
+
+.card {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 12px 14px;
+  margin: 10px 12px;
+  box-shadow: var(--shadow);
+}
+
+.btn {
+  appearance: none;
+  border: 1px solid var(--accent);
+  background: var(--accent);
+  color: var(--accent-contrast);
+  border-radius: 8px;
+  padding: 8px 16px;
+  font: inherit;
+  font-weight: 600;
+  cursor: pointer;
+  min-height: 36px;
+}
+.btn.secondary { background: transparent; color: var(--text); border-color: var(--border); }
+.btn:disabled { opacity: 0.45; cursor: not-allowed; }
+.btn:focus-visible, .icon-btn:focus-visible, input:focus-visible, .lang:focus-visible { outline: 2px solid var(--focus); outline-offset: 2px; }
+
+.icon-btn { appearance: none; background: transparent; border: 0; cursor: pointer; font-size: 16px; padding: 4px 8px; color: var(--muted); }
+
+input[type="password"], input[type="text"], input[type="url"], textarea {
+  width: 100%;
+  font: inherit;
+  color: var(--text);
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  padding: 8px 10px;
+}
+
+.warning { background: var(--warn-bg); color: var(--warn-text); border-radius: 8px; padding: 8px 10px; margin-top: 8px; font-size: 13px; }
+.error { background: var(--err-bg); color: var(--err-text); border-radius: 8px; padding: 8px 10px; margin-top: 8px; font-size: 13px; white-space: pre-wrap; }
+.note { background: var(--accent-soft); border-radius: 8px; padding: 8px 10px; margin-top: 8px; font-size: 13px; }
+
+.topbar { display: flex; align-items: center; gap: 10px; padding: 10px 14px; background: var(--surface); border-bottom: 1px solid var(--border); }
+.brand { display: flex; flex-direction: column; line-height: 1.15; flex: 1; }
+.brand-name { font-weight: 700; }
+.brand-tag { font-size: 12px; color: var(--muted); }
+.lang { appearance: none; border: 1px solid var(--border); background: transparent; color: var(--muted); border-radius: 6px; padding: 3px 8px; font: inherit; font-size: 12px; cursor: pointer; }

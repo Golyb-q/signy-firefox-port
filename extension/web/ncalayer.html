@@ -1,0 +1,31 @@
+<!doctype html>
+<html lang="ru">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Signy — вместо NCALayer</title>
+  <link rel="stylesheet" href="../ui/common.css">
+  <style>
+    main { max-width: 720px; margin: 24px auto; padding: 0 12px; }
+    h1 { font-size: 22px; margin: 12px 0; }
+    li { margin: 4px 0; }
+    code { font: 12px ui-monospace, Menlo, monospace; background: var(--bg); padding: 1px 4px; border-radius: 4px; }
+  </style>
+</head>
+<body>
+  <main>
+    <div class="card">
+      <h1>Signy работает вместо NCALayer</h1>
+      <p>Это расширение Chrome обрабатывает запросы сайтов к NCALayer (<code>wss://127.0.0.1:13579</code>) прямо в браузере.
+        Локальный сервер, Java и установка корневых сертификатов НУЦ РК в систему не нужны.</p>
+      <ul>
+        <li>Сайты .kz (eGov, Салык, госзакупки и др.) видят «запущенный NCALayer» автоматически.</li>
+        <li>Для другого сайта нажмите на значок Signy и выберите «Разрешить Signy на этом сайте».</li>
+        <li>Каждая подпись требует вашего подтверждения в окне Signy; пароль от ключа никуда не передаётся.</li>
+        <li>Поддерживаются файлы ключей PKCS#12 (<code>.p12</code>): ГОСТ 34.10-2015 (512), ГОСТ 34.310-2004, RSA.</li>
+      </ul>
+      <p class="muted small">Если вы попали на эту страницу, открыв адрес https://127.0.0.1:13579 — всё в порядке: этот адрес обслуживает Signy.</p>
+    </div>
+  </main>
+</body>
+</html>

@@ -1,0 +1,11 @@
+{
+  "name": "signy",
+  "version": "0.1.0",
+  "private": true,
+  "description": "Signy - NCALayer-compatible signing Chrome extension (no local server, no root certificates)",
+  "type": "module",
+  "scripts": {
+    "test": "node --test test/unit/*.test.mjs",
+    "test:e2e": "node test/e2e/run.mjs"
+  }
+}

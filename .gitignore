@@ -1,0 +1,4 @@
+.DS_Store
+node_modules/
+# written by Chrome when the unpacked extension is loaded
+extension/_metadata/

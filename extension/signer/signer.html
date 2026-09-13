@@ -1,0 +1,104 @@
+<!doctype html>
+<html lang="ru">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Signy — подписание</title>
+  <link rel="stylesheet" href="../ui/common.css">
+  <link rel="stylesheet" href="signer.css">
+  <script type="module" src="signer.js"></script>
+</head>
+<body>
+  <header class="topbar">
+    <img class="brand-icon" src="../icons/icon32.png" alt="" width="24" height="24">
+    <div class="brand">
+      <span class="brand-name">Signy</span>
+      <span class="brand-tag" data-t="appTagline">Подпись ЭЦП без NCALayer</span>
+    </div>
+    <button class="lang" id="lang" type="button" title="Қазақша / Русский">ҚАЗ</button>
+  </header>
+
+  <main id="app">
+    <section class="card request" id="request" hidden>
+      <div class="req-row">
+        <div class="req-origin-wrap">
+          <div class="label" data-t="requestFrom">Запрос от сайта</div>
+          <div class="origin" id="origin"></div>
+        </div>
+        <img id="siteLogo" class="site-logo" alt="" hidden>
+      </div>
+      <div class="op">
+        <span class="label" data-t="operation">Операция</span>
+        <span id="opTitle" class="op-title"></span>
+      </div>
+      <div id="opNote" class="note" hidden></div>
+      <div id="firstTime" class="warning" hidden data-t="firstTime"></div>
+    </section>
+
+    <section class="card" id="dataCard" hidden>
+      <div class="card-head">
+        <h2><span data-t="dataToSign">Данные для подписи</span> <span id="docCount" class="muted"></span></h2>
+      </div>
+      <div id="docs"></div>
+    </section>
+
+    <section class="card" id="keyCard" hidden>
+      <h2 data-t="key">Ключ ЭЦП</h2>
+      <div class="storage-line">
+        <span class="label" data-t="storage">Хранилище</span>
+        <span data-t="storageFile">Файл ключа PKCS#12 (.p12)</span>
+      </div>
+      <div id="tokenNote" class="note small" hidden data-t="tokensNotSupported"></div>
+
+      <div id="savedKeys" class="saved-keys" hidden>
+        <div class="label" data-t="rememberedKeys">Сохранённые ключи</div>
+        <ul id="savedList"></ul>
+      </div>
+
+      <div class="file-row">
+        <label class="btn secondary file-btn">
+          <input id="fileInput" type="file" accept=".p12,.pfx,application/x-pkcs12">
+          <span data-t="chooseFile">Выбрать файл ключа…</span>
+        </label>
+        <span id="fileName" class="muted ellipsis" data-t="noFile">Файл не выбран</span>
+      </div>
+
+      <form id="pwForm" class="pw-row" autocomplete="off">
+        <label for="password" class="label" data-t="password">Пароль</label>
+        <div class="pw-input">
+          <input id="password" type="password" autocomplete="off" spellcheck="false" disabled>
+          <button id="togglePw" type="button" class="icon-btn" aria-label="Показать пароль" data-t-title="showPassword">👁</button>
+        </div>
+        <label class="check"><input id="remember" type="checkbox"> <span data-t="remember"></span></label>
+        <button id="openBtn" class="btn" type="submit" disabled data-t="open">Открыть ключ</button>
+      </form>
+      <div id="keyOpened" class="key-opened" hidden>
+        <span class="ok-mark">✓</span><span data-t="keyOpened">Ключ открыт</span><b id="keyOpenedName"></b>
+        <button id="changeKey" type="button" class="link-btn" data-t="changeKey">Сменить</button>
+      </div>
+      <div id="keyError" class="error" role="alert" hidden></div>
+    </section>
+
+    <section class="card" id="certCard" hidden>
+      <h2 data-t="certificates">Сертификаты в хранилище</h2>
+      <ul id="certList" class="cert-list" role="radiogroup"></ul>
+    </section>
+
+    <section class="card" id="fileCard" hidden>
+      <div class="note" data-t="fileNote"></div>
+      <label class="btn secondary file-btn">
+        <input id="anyFileInput" type="file">
+        <span data-t="chooseFile"></span>
+      </label>
+    </section>
+
+    <div id="status" class="status" role="status" hidden></div>
+    <div id="fatal" class="error big" role="alert" hidden></div>
+  </main>
+
+  <footer class="actions">
+    <button id="cancelBtn" class="btn secondary" type="button" data-t="cancel">Отмена</button>
+    <button id="signBtn" class="btn primary" type="button" disabled data-t="sign">Подписать</button>
+  </footer>
+</body>
+</html>
