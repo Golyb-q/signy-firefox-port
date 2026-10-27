@@ -1,0 +1,56 @@
+<!doctype html>
+<html lang="ru">
+<head>
+  <meta charset="utf-8">
+  <title>Signy</title>
+  <link rel="stylesheet" href="../ui/common.css">
+  <link rel="stylesheet" href="popup.css">
+  <script type="module" src="popup.js"></script>
+</head>
+<body>
+  <header class="topbar">
+    <img class="brand-icon" src="../icons/icon32.png" alt="" width="24" height="24">
+    <div class="brand">
+      <span class="brand-name">Signy <span id="version" class="muted small"></span></span>
+      <span class="brand-tag">Подпись ЭЦП без NCALayer</span>
+    </div>
+  </header>
+
+  <section class="card">
+    <div class="row">
+      <div>
+        <div class="label">Эмуляция NCALayer</div>
+        <div id="globalState" class="state"></div>
+      </div>
+      <label class="switch"><input id="globalToggle" type="checkbox"><span></span></label>
+    </div>
+  </section>
+
+  <section class="card" id="siteCard" hidden>
+    <div class="label">Текущий сайт</div>
+    <div id="siteOrigin" class="origin-small"></div>
+    <div id="siteState" class="state small"></div>
+    <div class="btns">
+      <button id="siteEnable" class="btn" type="button" hidden>Разрешить Signy на этом сайте</button>
+      <button id="siteDisable" class="btn secondary" type="button" hidden>Отключить на этом сайте</button>
+      <button id="siteReenable" class="btn secondary" type="button" hidden>Включить снова</button>
+    </div>
+  </section>
+
+  <section class="card">
+    <div class="row"><h2>Сохранённые ключи</h2></div>
+    <ul id="keys" class="keys"></ul>
+    <div id="noKeys" class="muted small">Ключи не сохранены. Ключ выбирается из файла при каждом запросе подписи.</div>
+  </section>
+
+  <section class="card small muted about">
+    Signy не устанавливает корневые сертификаты и не открывает сетевые порты. Запросы сайтов к NCALayer
+    (wss://127.0.0.1:13579) обрабатываются внутри браузера; подпись выполняется только после вашего подтверждения.
+  </section>
+
+  <footer class="links">
+    <a href="#" id="openOptions">Настройки</a>
+    <a href="#" id="openTest">Что такое Signy</a>
+  </footer>
+</body>
+</html>

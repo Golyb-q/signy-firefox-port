@@ -1,0 +1,64 @@
+<!doctype html>
+<html lang="ru">
+<head>
+  <meta charset="utf-8">
+  <title>Signy — настройки</title>
+  <link rel="stylesheet" href="../ui/common.css">
+  <link rel="stylesheet" href="options.css">
+  <script type="module" src="options.js"></script>
+</head>
+<body>
+  <header class="topbar">
+    <img class="brand-icon" src="../icons/icon32.png" alt="" width="24" height="24">
+    <div class="brand">
+      <span class="brand-name">Signy — настройки</span>
+      <span class="brand-tag">Подпись ЭЦП без NCALayer</span>
+    </div>
+  </header>
+  <main class="wrap">
+    <section class="card">
+      <h2>Общие</h2>
+      <label class="opt"><input type="checkbox" id="enabled"> Эмулировать NCALayer на сайтах (.kz и разрешённых вручную)</label>
+      <label class="opt"><input type="checkbox" id="rememberKeysDefault"> По умолчанию предлагать запомнить ключ</label>
+      <label class="opt">Язык окна подписи
+        <select id="uiLocale">
+          <option value="auto">Как просит сайт</option>
+          <option value="ru">Русский</option>
+          <option value="kk">Қазақша</option>
+        </select>
+      </label>
+      <label class="opt col">Сервис меток времени (TSP)
+        <input type="url" id="tsaUrl" placeholder="http://tsp.pki.gov.kz">
+      </label>
+    </section>
+
+    <section class="card">
+      <h2>Сайты</h2>
+      <div class="muted small">Signy работает на всех сайтах в зоне .kz. Другие сайты можно разрешить из меню расширения.</div>
+      <h3>Разрешённые дополнительно</h3>
+      <ul id="extraOrigins" class="list"></ul>
+      <h3>Отключено</h3>
+      <ul id="disabledOrigins" class="list"></ul>
+      <h3>Сайты, получавшие подпись</h3>
+      <ul id="sites" class="list"></ul>
+    </section>
+
+    <section class="card">
+      <h2>Для разработчиков</h2>
+      <label class="opt"><input type="checkbox" id="allowTestCa"> Доверять тестовым сертификатам НУЦ РК (TEST CA)</label>
+      <label class="opt col">Дополнительные доверенные корневые сертификаты (PEM)
+        <textarea id="extraTrustPem" rows="6" spellcheck="false" placeholder="-----BEGIN CERTIFICATE-----"></textarea>
+      </label>
+      <div class="muted small">Эти сертификаты используются только для проверки цепочки внутри Signy и никогда не устанавливаются в систему.</div>
+    </section>
+
+    <section class="card">
+      <h2>Ключи</h2>
+      <ul id="keys" class="list"></ul>
+      <button class="btn secondary" id="deleteAllKeys" type="button">Удалить все сохранённые ключи</button>
+    </section>
+
+    <div class="save-row"><button class="btn" id="save" type="button">Сохранить</button> <span id="saved" class="muted" hidden>Сохранено</span></div>
+  </main>
+</body>
+</html>

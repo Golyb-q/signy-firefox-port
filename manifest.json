@@ -1,0 +1,103 @@
+{
+  "manifest_version": 3,
+  "name": "Signy — Firefox experimental port",
+  "short_name": "Signy",
+  "version": "0.1.0",
+  "description": "Совместимая с NCALayer подпись ЭЦП НУЦ РК прямо в браузере: без локального сервера, без установки корневых сертификатов.",
+  "icons": {
+    "16": "icons/icon16.png",
+    "32": "icons/icon32.png",
+    "48": "icons/icon48.png",
+    "128": "icons/icon128.png"
+  },
+  "action": {
+    "default_title": "Signy",
+    "default_popup": "popup/popup.html",
+    "default_icon": {
+      "16": "icons/icon16.png",
+      "32": "icons/icon32.png"
+    }
+  },
+  "background": {
+    "scripts": [
+      "background/sw.js"
+    ],
+    "type": "module"
+  },
+  "options_page": "popup/options.html",
+  "permissions": [
+    "storage",
+    "scripting",
+    "declarativeNetRequest"
+  ],
+  "host_permissions": [
+    "*://*.kz/*",
+    "http://localhost/*",
+    "http://127.0.0.1/*",
+    "https://127.0.0.1:13579/*",
+    "https://localhost:13579/*",
+    "http://tsp.pki.gov.kz/*",
+    "http://test.pki.gov.kz/*"
+  ],
+  "optional_host_permissions": [
+    "*://*/*"
+  ],
+  "content_scripts": [
+    {
+      "matches": [
+        "*://*.kz/*",
+        "http://localhost/*",
+        "http://127.0.0.1/*"
+      ],
+      "js": [
+        "content/inject.js"
+      ],
+      "run_at": "document_start",
+      "all_frames": true,
+      "match_origin_as_fallback": true,
+      "world": "MAIN"
+    },
+    {
+      "matches": [
+        "*://*.kz/*",
+        "http://localhost/*",
+        "http://127.0.0.1/*"
+      ],
+      "js": [
+        "content/bridge.js"
+      ],
+      "run_at": "document_start",
+      "all_frames": true,
+      "match_origin_as_fallback": true
+    }
+  ],
+  "declarative_net_request": {
+    "rule_resources": [
+      {
+        "id": "ncalayer_http",
+        "enabled": true,
+        "path": "background/dnr-rules.json"
+      }
+    ]
+  },
+  "web_accessible_resources": [
+    {
+      "resources": [
+        "web/nca.png",
+        "web/ncalayer.html"
+      ],
+      "matches": [
+        "<all_urls>"
+      ]
+    }
+  ],
+  "content_security_policy": {
+    "extension_pages": "script-src 'self'; object-src 'none'; base-uri 'none'; frame-ancestors 'none'"
+  },
+  "browser_specific_settings": {
+    "gecko": {
+      "id": "signy-firefox-port@local.invalid",
+      "strict_min_version": "128.0"
+    }
+  }
+}

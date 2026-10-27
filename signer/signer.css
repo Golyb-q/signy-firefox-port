@@ -1,0 +1,61 @@
+html, body { height: 100%; }
+body { display: flex; flex-direction: column; }
+main { flex: 1; overflow-y: auto; padding-bottom: 8px; }
+
+.request { border-left: 4px solid var(--accent); }
+.req-row { display: flex; align-items: flex-start; gap: 10px; }
+.req-origin-wrap { flex: 1; min-width: 0; }
+.origin { font-size: 17px; font-weight: 700; word-break: break-all; margin-top: 2px; }
+.origin .scheme { color: var(--muted); font-weight: 500; }
+.origin.insecure .scheme { color: var(--err-text); }
+.site-logo { width: 40px; height: 40px; object-fit: contain; border-radius: 6px; border: 1px solid var(--border); }
+.op { margin-top: 8px; display: flex; flex-direction: column; }
+.op-title { font-weight: 600; }
+
+.card-head { display: flex; align-items: baseline; justify-content: space-between; }
+.doc { border: 1px solid var(--border); border-radius: 8px; margin-top: 8px; overflow: hidden; }
+.doc-head { display: flex; justify-content: space-between; align-items: center; gap: 8px; padding: 6px 10px; background: var(--bg); font-size: 12px; color: var(--muted); }
+.doc-body { margin: 0; padding: 8px 10px; max-height: 140px; overflow: auto; font: 12px/1.45 ui-monospace, SFMono-Regular, Menlo, Consolas, monospace; white-space: pre-wrap; word-break: break-all; }
+.doc.expanded .doc-body { max-height: 420px; }
+.doc-actions { display: flex; gap: 6px; }
+.link-btn { appearance: none; background: none; border: 0; color: var(--focus); cursor: pointer; font: inherit; font-size: 12px; padding: 0; }
+
+.storage-line { display: flex; gap: 8px; align-items: baseline; margin-bottom: 6px; }
+.saved-keys ul { list-style: none; margin: 4px 0 8px; padding: 0; }
+.saved-keys li { display: flex; align-items: center; gap: 8px; padding: 6px 8px; border: 1px solid var(--border); border-radius: 8px; margin-top: 4px; cursor: pointer; }
+.saved-keys li.selected { border-color: var(--accent); background: var(--accent-soft); }
+.saved-keys li .name { flex: 1; min-width: 0; }
+.saved-keys li .sub { font-size: 12px; color: var(--muted); }
+
+.file-row { display: flex; align-items: center; gap: 10px; margin: 6px 0 10px; }
+.file-btn { position: relative; overflow: hidden; display: inline-flex; align-items: center; white-space: nowrap; }
+.file-btn input[type="file"] { position: absolute; inset: 0; opacity: 0; cursor: pointer; }
+
+.pw-row { display: grid; gap: 6px; }
+.pw-input { display: flex; align-items: center; gap: 4px; }
+.check { display: flex; gap: 8px; align-items: flex-start; font-size: 12px; color: var(--muted); }
+.check input { margin-top: 2px; }
+#openBtn { justify-self: end; }
+
+.cert-list { list-style: none; margin: 0; padding: 0; }
+.cert { display: grid; grid-template-columns: 22px 1fr; gap: 4px 8px; padding: 10px; border: 1px solid var(--border); border-radius: 8px; margin-top: 6px; cursor: pointer; }
+.cert.selected { border-color: var(--accent); background: var(--accent-soft); }
+.cert.disabled { opacity: 0.6; cursor: not-allowed; }
+.cert input { margin-top: 3px; }
+.cert .cn { font-weight: 650; }
+.cert .meta { grid-column: 2; font-size: 12px; color: var(--muted); }
+.cert .badges { grid-column: 2; display: flex; flex-wrap: wrap; gap: 4px; }
+.badge { font-size: 11px; border-radius: 999px; padding: 1px 8px; border: 1px solid var(--border); color: var(--muted); }
+.badge.ok { border-color: var(--accent); color: var(--accent); }
+.badge.bad { border-color: var(--err-text); color: var(--err-text); }
+.cert .why { grid-column: 2; font-size: 12px; color: var(--err-text); }
+
+.status { margin: 10px 12px; padding: 8px 10px; border-radius: 8px; background: var(--accent-soft); font-size: 13px; }
+.error.big { margin: 10px 12px; font-size: 14px; }
+
+.actions { display: flex; justify-content: flex-end; gap: 8px; padding: 10px 12px; background: var(--surface); border-top: 1px solid var(--border); }
+
+.key-opened { display: flex; align-items: center; gap: 6px; font-size: 13px; margin-top: 4px; }
+.key-opened .ok-mark { color: var(--accent); font-weight: 700; }
+.key-opened b::before { content: '· '; font-weight: 400; color: var(--muted); }
+.key-opened b { overflow: hidden; text-overflow: ellipsis; white-space: nowrap; max-width: 260px; }
